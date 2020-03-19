@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Details</title>
+  <link rel="stylesheet" type="text/css" href="projstyle.css">  
+</head>
+<script type="text/javascript">
+function populate(s1,s2){
+  var s1 = document.getElementById(s1);
+  var s2 = document.getElementById(s2);
+  s2.innerHTML = "";
+  if(s1.value == "Sanskrit"){
+    var optionArray = ["|","BasicTamil|BasicTamil","AdvancedTamil|AdvancedTamil"];
+  } else if(s1.value == "Hindi"){
+    var optionArray = ["|","BasicTamil|BasicTamil","AdvancedTamil|AdvancedTamil"];
+  } else if(s1.value == "Tamil"){
+    var optionArray = ["|","B.Com.(A&F)|B.Com.(A&F)","B.Com.(CS)|B.Com.(CS)","B.Com.(BM)|B.Com.(BM)","B.Com.(General)|B.Com.(General)","B.Com.(CA)|B.Com.(CA)","B.Com.(ISM)|B.Com.(ISM)","Business Administration|Business Administration","Computer Science|Computer Science"];
+  }
+  for(var option in optionArray){
+    var pair = optionArray[option].split("|");
+    var newOption = document.createElement("option");
+    newOption.value = pair[0];
+    newOption.innerHTML = pair[1];
+    s2.options.add(newOption);
+  }
+}
+</script>
+  
+<body>
+  <!-------------------------------Navigations and heading-------------------------------------->
+  <div class="header">
+    <div class="sidemenu">
+      <h2>Menu</h2>
+    <ul>
+      <li><a href="project.php">Home</a></li>
+      <li><a href="Registration.html">Registration</a></li>n
+      <li><a href="logout.php">Logout</a></li>        
+      </ul>
+      </div> 
+    <div class="maincontent">
+      <div class="title">Student's Extra Curricular Activity Management</div>
+          <!-------------------------------Student details form----------------------------------------->
+          <div class="login-box">
+            <img src="avatar.png" class="avatar">
+    <h1><strong>Students Enrollment</strong></h1>
+   <form name="details" method="post" action="details.php">
+    <label>Department Name:</label><select name="department" required="">
+        <option selected hidden value="">--Select--</option>
+        <option value="B.Com.(A&F)">B.Com.(A&F)</option>
+        <option value="B.Com.(CS)">B.Com.(CS)</option>
+        <option value="B.Com.(BM)">B.Com.(BM)</option>
+        <option value="B.Com.(General)">B.Com.(General)</option>
+        <option value="B.Com.(CA)">B.Com.(CA)</option>
+        <option value="B.Com.(ISM)">B.Com.(ISM)</option> 
+        <option value="Business Administration">Business Administration</option>
+        <option value="B.Sc Computer Science">B.Sc Computer Science</option>
+        <option value="BCA">BCA</option></select><br>
+    <label>Department No:</label><input type="text" name="deptno" class="studentinput" placeholder="Enter Department Number" required=""><br>
+    <label>Name:</label><input type="text" name="name" class="studentinput" required="" placeholder="Enter Name"><br>
+    <label>Language:</label><select name="lang" id="lang" onchange="populate(this.id,'nme')" required="">
+             <option hidden value="">--Select--</option>
+             <option value="Tamil">Tamil</option>
+             <option value="Sanskrit">Sanskrit</option>
+             <option value="Hindi">Hindi</option></select><br>
+    <label>Non Major Elective(NME):</label><select name="nme"  id="nme" required=""><option hidden value="">--Select--</option>
+          </select><br>
+    <label> Extension Activities:</label><select name="activity" required="">
+          <option hidden value="">--Select--</option>
+          <option value="NCC">N.C.C.</option>
+          <option value="NSS">N.S.S.</option>
+          <option value="ROTARACT">ROTARACT</option>
+          <option value="YRC">Y.R.C</option>
+          <option value="Fine Arts">Fine Arts</option></select><br>
+     <button type="submit" name="save" id="save">Save</button>
+     <button type="reset" name="cancel">Cancel</button>
+   </form>
+ </div>
+   </div>
+</div>
+</body>
+</html>
